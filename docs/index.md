@@ -197,21 +197,23 @@ System: [Returns verification status, summary, and evidence sources]
 +------------+-------------+
              |
              v
-+------------+-------------------+
-|     Agent Dispatcher           |
-+---+------------+--------+------+
-|               |              |
-v               v              v
++------------+-------------+
+|     Agent Dispatcher      |
++---+------------+--------+---+
+    |            |        |
+    v            v        v
 +-----------+ +-----------+ +-----------+
 |  Finder   | |  Profiler | | Verifier  |
 |  Agent    | |  Agent    | |  Agent    |
 +-----------+ +-----------+ +-----------+
                    |               ^
-                   | (calls)       |
+                   |(if Credibility|
+                   |Scores         |
+                   |calls)         |
                    +---------------+
 
 Outputs from all agents:
-- Finder ➜ Structured Predictions
+- Finder ➜ Predictions
 - Profiler ➜ Predictor Profiles & Credibility Scores
 - Verifier ➜ Verified Prediction Outcomes
 
