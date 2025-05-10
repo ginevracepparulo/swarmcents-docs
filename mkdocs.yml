@@ -1,0 +1,17 @@
+site_name: SwarmCents Documentation
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.indexes
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Home: index.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
