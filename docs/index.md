@@ -197,31 +197,33 @@ System: [Returns verification status, summary, and evidence sources]
 +------------+-------------+
              |
              v
-+------------+-------------+
-|     Agent Dispatcher      |
-+---+------------+--------+---+
-    |            |        |
-    v            v        v
-+-----------+ +-----------+ +-----------+
-|  Finder   | |  Profiler | | Verifier  |
-|  Agent    | |  Agent    | |  Agent    |
-+-----------+ +-----------+ +-----------+
-                   |               ^
-                   |(if Credibility|
-                   |Scores         |
-                   |calls)         |
-                   +---------------+
++------------+--------------------------------+
+|     Agent Dispatcher                        |
++---------------------------------------------+
+    |            |                      |
+    v            v                      v
++-------------+  +--------------+   +---------------------+
+|Prediction   |  |Prediction    |   |Profile Builder      |
+|Finder Agent |  |Verifier Agent|   |Agent                |
++-------------+  +--------------+   +---------------------+
+      |               |       |               ^   |
+      |               |       |(if Credibility|   |
+      |               |       |Scores         |   |
+      |               |       |calls)         |   |
+      |               |       +---------------+   |
+      |               |                           |
+      |               |                           |
+      |               |                           |
+      |               |                           |
+      |               |                           |
+      v               v                           v
+ (Predictions)  (Verifications)   (Profile/Credibility)
+      \               |                     /
+       \              |                    /
+        +-------------v-------------------+
+        |      SwarmCents Output          |
+        +---------------------------------+
 
-Outputs from all agents:
-- Finder ➜ Predictions
-- Profiler ➜ Predictor Profiles & Credibility Scores
-- Verifier ➜ Verified Prediction Outcomes
-
-             v
-+------------------------------------------+
-|            Final Structured Output        |
-|  (Predictions, Profiles, Verifications)   |
-+------------------------------------------+
 ```
 
 This diagram illustrates the multi-agent orchestration across components to convert social media predictions into actionable intelligence.
